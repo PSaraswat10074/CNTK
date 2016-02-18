@@ -169,8 +169,6 @@ std::string DebugUtil::GetCallStack()
     symbolInfo->SizeOfStruct = sizeof(SYMBOL_INFO);
     frames = std::min(frames, MAX_CALL_STACK_DEPTH);
 
-    flatCallStack += crlf + "[CALL STACK]" + crlf;
-
     for (unsigned int i = 1; i < frames; i++)
     {
         if (i == 1)

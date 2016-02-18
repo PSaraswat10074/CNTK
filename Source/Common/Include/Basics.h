@@ -9,6 +9,7 @@
 
 #include "Platform.h"
 #include "DebugUtil.h"
+#include "RichException.h"
 #include <string>
 #include <vector>
 #include <assert.h>
@@ -51,6 +52,8 @@ using namespace std;
 template <class E>
 __declspec_noreturn void ThrowFormatted(const char* format, ...) __attribute__((format(printf, 1, 2)));
 #endif
+
+
 template <class E>
 __declspec_noreturn static inline void ThrowFormatted(const char* format, ...)
 {
@@ -64,8 +67,8 @@ __declspec_noreturn static inline void ThrowFormatted(const char* format, ...)
 #endif
     Microsoft::MSR::CNTK::DebugUtil::PrintCallStack();
     std::string msg(buffer);
-    msg += Microsoft::MSR::CNTK::DebugUtil::GetCallStack();
-    throw E(msg);
+    std::string callstack(Microsoft::MSR::CNTK::DebugUtil::GetCallStack());
+    throw RichException<E>(msg, callstack);
 };
 #pragma warning(pop)
 
