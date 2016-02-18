@@ -156,8 +156,12 @@
       <Filter>Control</Filter>
     </Text>
     <Text Include="Data\ImageReaderSimple_map.txt" />
+    <Text Include="Config\ImageReaderSimple_Config.cntk" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Config\ImageReaderSimple_Config.cntk" />
+    <Image Include="Data\images\black.jpg" />
+    <Image Include="Data\images\blue.jpg" />
+    <Image Include="Data\images\green.jpg" />
+    <Image Include="Data\images\red.jpg" />
   </ItemGroup>
 </Project>
