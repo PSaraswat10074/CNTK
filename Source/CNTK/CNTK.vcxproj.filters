@@ -196,7 +196,7 @@
     <ClInclude Include="..\Common\Include\StringUtil.h">
       <Filter>Common\Include</Filter>
     </ClInclude>
-    <ClInclude Include="..\Common\Include\RichException.h">
+    <ClInclude Include="..\Common\Include\ExceptionWithCallStack.h">
       <Filter>Common\Include</Filter>
     </ClInclude>
   </ItemGroup>

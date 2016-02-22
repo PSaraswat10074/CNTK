@@ -9,7 +9,7 @@
 
 #include "Platform.h"
 #include "DebugUtil.h"
-#include "RichException.h"
+#include "ExceptionWithCallStack.h"
 #include <string>
 #include <vector>
 #include <assert.h>
@@ -68,7 +68,7 @@ __declspec_noreturn static inline void ThrowFormatted(const char* format, ...)
     Microsoft::MSR::CNTK::DebugUtil::PrintCallStack();
     std::string msg(buffer);
     std::string callstack(Microsoft::MSR::CNTK::DebugUtil::GetCallStack());
-    throw RichException<E>(msg, callstack);
+    throw ExceptionWithCallStack<E>(msg, callstack);
 };
 #pragma warning(pop)
 

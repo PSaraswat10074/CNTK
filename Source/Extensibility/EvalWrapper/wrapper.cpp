@@ -13,7 +13,7 @@
 #include <memory>
 #include <msclr\marshal_cppstd.h>
 
-#include "RichException.h"
+#include "ExceptionWithCallStack.h"
 #include "Eval.h"
 
 #using <System.dll>
@@ -242,19 +242,19 @@ private:
     CNTKException^ GetCustomException(const exception& ex)
     {
         // Determine the appropriate exception and initialize it with the exception payload
-        if (typeid(ex) == typeid(RichException<runtime_error>))
+        if (typeid(ex) == typeid(ExceptionWithCallStack<runtime_error>))
         {
-            RichException<runtime_error>& rich = dynamic_cast<RichException<runtime_error>&>((runtime_error&)ex);
+            ExceptionWithCallStack<runtime_error>& rich = dynamic_cast<ExceptionWithCallStack<runtime_error>&>((runtime_error&)ex);
             return gcnew CNTKRuntimeException(gcnew System::String(rich.what()), gcnew System::String(rich.callStack().c_str()));
         }
-        else if (typeid(ex) == typeid(RichException<logic_error>))
+        else if (typeid(ex) == typeid(ExceptionWithCallStack<logic_error>))
         {
-            RichException<logic_error>& rich = dynamic_cast<RichException<logic_error>&>((logic_error&)ex);
+            ExceptionWithCallStack<logic_error>& rich = dynamic_cast<ExceptionWithCallStack<logic_error>&>((logic_error&)ex);
             return gcnew CNTKLogicErrorException(gcnew System::String(ex.what()), gcnew System::String(rich.callStack().c_str()));
         }
-        else if (typeid(ex) == typeid(RichException<invalid_argument>))
+        else if (typeid(ex) == typeid(ExceptionWithCallStack<invalid_argument>))
         {
-            RichException<invalid_argument>& rich = dynamic_cast<RichException<invalid_argument>&>((invalid_argument&)ex);
+            ExceptionWithCallStack<invalid_argument>& rich = dynamic_cast<ExceptionWithCallStack<invalid_argument>&>((invalid_argument&)ex);
             return gcnew CNTKInvalidArgumentException(gcnew System::String(ex.what()), gcnew System::String(rich.callStack().c_str()));
         }
         else if (typeid(ex) == typeid(bad_alloc))
