@@ -13,7 +13,9 @@
 #include <vector>
 #include <assert.h>
 #include <stdarg.h>
+#ifdef _WIN32
 #include <Windows.h>
+#endif
 #if __unix__
 #include <dlfcn.h> // for Plugin
 #endif

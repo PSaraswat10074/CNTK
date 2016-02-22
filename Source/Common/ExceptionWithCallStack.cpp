@@ -7,10 +7,13 @@
 #include "stdafx.h"
 #include "ExceptionWithCallStack.h"
 #include "Basics.h"
+#ifdef _WIN32
 #include "DbgHelp.h"
+#include <WinBase.h>
+#endif
 #include <algorithm>
 #include <iostream>
-#include <WinBase.h>
+
 
 namespace Microsoft { namespace MSR { namespace CNTK {
 
