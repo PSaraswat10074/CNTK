@@ -74,7 +74,7 @@ namespace Microsoft.MSR.CNTK.Extensibility.Managed.CSEvalClient
             }
             catch (CNTKException ex)
             {
-                Console.WriteLine("Error: {0} \nNative CallStack: {1}\n Inner Exception: {2}", ex.Message, ex.NativeCallStack, ex.InnerException != null ? ex.InnerException.Message : "No Inner Exception");
+                Console.WriteLine("Error: {0}\nNative CallStack: {1}\n Inner Exception: {2}", ex.Message, ex.NativeCallStack, ex.InnerException != null ? ex.InnerException.Message : "No Inner Exception");
             }
 
             Console.WriteLine("Press <Enter> to terminate.");
